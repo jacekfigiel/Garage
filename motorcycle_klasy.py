@@ -1,5 +1,5 @@
 from enum import Enum
-from random import randint
+import json
 
 
 class Motorcycle:
@@ -35,7 +35,7 @@ class Motorcycle:
                f"Plate number is {self.id_number}."
 
     def show_brand(self):
-        return self.brand, self.model
+        return self.brand + " " + self.model
 
     def sport_exhaust(self):
         """Better exhaust more power you've got"""

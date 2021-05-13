@@ -18,7 +18,7 @@ class Garage:
         elif self.spaces > 0:
             self.inventory.append(motorcycle)
             self.spaces -= 1
-            self.details = " ".join(motorcycle.show_brand())
+            self.details = motorcycle.show_brand()
             print(f"Adding motorcycle {self.details} to the garage.")
 
     def del_motorcycle(self, motorcycle):
@@ -26,18 +26,20 @@ class Garage:
         if motorcycle not in self.inventory:
             print("Sorry the garage is empty, I don't know what"
                   " happen to your motorcycle.")
-        if motorcycle in self.inventory:
+        elif motorcycle in self.inventory:
             self.inventory.remove(motorcycle)
             self.spaces += 1
-            self.details = " ".join(motorcycle.show_brand())
+            self.details = motorcycle.show_brand()
             print(f"Removing motorcycle {self.details} from garage.")
 
     def show_garage(self):
         """Show all motorcycle in inventory and give a name of garage"""
-        print(f"In garage {self.name} we have:")
-        for moto in self.inventory:
-            print(moto)
-            print(moto.speck())
+        if len(self.inventory) == 0:
+            print("The garage is empty.")
+        elif len(self.inventory) > 0:
+            print(f"In garage {self.name} we have:")
+            for moto in self.inventory:
+                print(moto)
 
     def get_ready_for_race(self):
         """Upgrade motorcycle parts for better performance"""
@@ -54,3 +56,5 @@ val = Motorcycle("Yamaha", "R6", 600, 120, 180, 260, 3.2, 22)
 mar = SportMotorcycle("Honda", "CBR", 100, 190)
 gar = Garage(2, "Warsztat u bronka")
 gar.add_motorcycle(val)
+gar.add_motorcycle(mar)
+gar.show_garage()
