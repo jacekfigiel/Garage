@@ -49,7 +49,27 @@ class Garage:
             print("We upgraded you're bike new parameters are: ")
             self.motorcycle = moto.lose_weight()
             self.motorcycle = moto.sport_exhaust()
+            self.motorcycle = moto.slick_tyre()
             print(moto.speck())
+            print(moto.check_tyre_and_suspension())
+            print()
+
+    def get_ready_for_off_road_race(self):
+        """Upgrade motorcycle for better performance on dirt track"""
+        print("time to get dirty.")
+        for moto in self.inventory:
+            print(moto.speck())
+            print("We upgraded you're bike new parameters are: ")
+            self.motorcycle = moto.off_road_settings()
+            self.motorcycle = moto.smaller_back_sprocket()
+            print(moto.speck())
+            print()
+
+    def go_back_on_road(self):
+        """Bring back motorcycle to factory settings"""
+        print("Let's go back on the road.")
+        for moto in self.inventory:
+            self.motorcycle = moto.public_road_settings()
 
 
 val = Motorcycle("Yamaha", "R6", 600, 120, 180, 260, 3.2, 22)
@@ -57,4 +77,7 @@ mar = SportMotorcycle("Honda", "CBR", 100, 190)
 gar = Garage(2, "Warsztat u bronka")
 gar.add_motorcycle(val)
 gar.add_motorcycle(mar)
+gar.get_ready_for_off_road_race()
+gar.show_garage()
+gar.go_back_on_road()
 gar.show_garage()

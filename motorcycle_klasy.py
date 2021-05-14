@@ -23,6 +23,7 @@ class Motorcycle:
         self.engine_cc = int(engine_cc)
         self.hp = int(hp)
         self.tyre = Tyre.all
+        self.suspension = Suspension.road
         self.weight = int(weight)
         self.top_speed = int(top_speed)
         self.acceleration = float(acceleration)
@@ -31,7 +32,7 @@ class Motorcycle:
     def __str__(self):
         return f"Motorcycle {self.brand} {self.model} " \
                f"{self.engine_cc}-CC and {self.hp}-HP " \
-               f"fitted with {self.tyre} tyres. " \
+               f"fitted with {self.tyre}. " \
                f"Plate number is {self.id_number}."
 
     def show_brand(self):
@@ -56,6 +57,18 @@ class Motorcycle:
         elif self.tyre == Tyre.wet or Tyre.all:
             print("It's all fine")
 
+    def off_road_settings(self):
+        self.suspension = Suspension.dirt
+        self.tyre = Tyre.off_road
+
+    def track_settings(self):
+        self.suspension = Suspension.track
+        self.tyre - Tyre.slick
+
+    def public_road_settings(self):
+        self.suspension = Suspension.road
+        self.tyre = Tyre.all
+
     def show_acceleration(self):
         for km in range(0, self.top_speed):
             print(km, "KPH")
@@ -69,7 +82,9 @@ class Motorcycle:
         return str(f"{self.brand} {self.model}\n"
                    f"Weight : {self.weight} kg\n"
                    f"Top speed : {self.top_speed} kmh\n"
-                   f"Acceleration 0-100 : {self.acceleration} s")
+                   f"Acceleration 0-100 : {self.acceleration} s\n"
+                   f"Fitted with set of {self.tyre} and suspension is"
+                   f" on {self.suspension}.")
 
     def lose_weight(self):
         """Lighter you faster you go"""
@@ -88,9 +103,16 @@ class Motorcycle:
 
 
 class Tyre(str, Enum):
-    all = "all weather"
+    all = "all weather tyre"
     slick = "slick tyre"
     wet = "wet_tyre"
+    off_road = "off road tyre"
+
+
+class Suspension(str, Enum):
+    road = "medium settings"
+    track = "hard settings"
+    dirt = "soft settings"
 
 
 class SportMotorcycle(Motorcycle):
