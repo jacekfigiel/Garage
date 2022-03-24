@@ -51,7 +51,6 @@ class Garage:
             self.motorcycle = moto.sport_exhaust()
             self.motorcycle = moto.slick_tyre()
             print(moto.speck())
-            print(moto.check_tyre_and_suspension())
             print()
 
     def get_ready_for_off_road_race(self):
@@ -71,13 +70,18 @@ class Garage:
         for moto in self.inventory:
             self.motorcycle = moto.public_road_settings()
 
+    def move_to_other_garage(self):
+        """Moving motorcycle between garages"""
+        machine = self.motorcycle.pop()
+        self.inventory.append(machine)
+
 
 val = Motorcycle("Yamaha", "R6", 600, 120, 180, 260, 3.2, 22)
 mar = SportMotorcycle("Honda", "CBR", 100, 190)
 gar = Garage(2, "Warsztat u bronka")
+gar2 = Garage(2, "Warsztat u Zenka")
 gar.add_motorcycle(val)
 gar.add_motorcycle(mar)
-gar.get_ready_for_off_road_race()
+gar.get_ready_for_race()
 gar.show_garage()
-gar.go_back_on_road()
-gar.show_garage()
+

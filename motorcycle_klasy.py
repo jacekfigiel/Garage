@@ -46,10 +46,12 @@ class Motorcycle:
         """Dry tyre improve grip, but when it's raining be careful."""
         self.tyre = Tyre.slick
         print(f"You can use all your {self.hp}HP on every corner.")
+        return True
 
     def wet_tyre(self):
         """Wet tyre keep you safe when is raining"""
         self.tyre = Tyre.wet
+        return False
 
     def rain(self):
         if self.tyre == Tyre.slick:
@@ -63,7 +65,7 @@ class Motorcycle:
 
     def track_settings(self):
         self.suspension = Suspension.track
-        self.tyre - Tyre.slick
+        self.tyre = Tyre.slick
 
     def public_road_settings(self):
         self.suspension = Suspension.road
@@ -83,6 +85,7 @@ class Motorcycle:
                    f"Weight : {self.weight} kg\n"
                    f"Top speed : {self.top_speed} kmh\n"
                    f"Acceleration 0-100 : {self.acceleration} s\n"
+                   f"HP: {self.hp}\n"
                    f"Fitted with set of {self.tyre} and suspension is"
                    f" on {self.suspension}.")
 
